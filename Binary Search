@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+int BinarySearch(int n,int x,int []);
+int main() {
+    // Write C++ code here
+    int arr[10];
+    for(int i=0;i<10;i++)
+    {
+        cin>>arr[i];
+    }
+    int x;
+    cout<<"Enter number you want to find : ";
+    cin>>x;
+    int n;
+    n=sizeof(arr)/sizeof(arr[0]);
+    int result=BinarySearch(n,x,arr);
+    if(result==-1){
+        cout<<"Not present";
+    }
+    else
+    {
+        cout<<"Found at index :"<<result;
+    }
+    return 0;
+}
+int BinarySearch(int n,int x,int arr[])
+{
+    int start,end,mid;
+    start=0;
+    end=n-1;
+    while(start<=end)
+    {
+        mid=(start+end)/2;
+        if(arr[mid]==x)
+        {
+            return mid;
+        }
+        else if(x<arr[mid])
+        {
+            end=mid-1;
+        }
+        else{
+            start=mid+1;
+        }
+    }
+    return -1;
+}
